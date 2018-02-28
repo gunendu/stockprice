@@ -1,9 +1,9 @@
-from flask import Flask,render_template
-import redis
-from flask import jsonify
+from flask import Flask,render_template,jsonify
+import redis 
 
 app = Flask(__name__)
-r = redis.StrictRedis(host='localhost', port=6379, db=0)
+app.config.from_pyfile('config.cfg')
+r = redis.StrictRedis(host=app.config['REDIS_HOST'], port=app.config['REDIS_PORT'], db=0)
 
 @app.route('/')
 def fetchTopStocks():
@@ -30,6 +30,4 @@ def show_top10():
   return stocks
 
 if __name__ == '__main__':
-    app.jinja_env.auto_reload = True
-    app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(debug = True)
+  app.run(debug = True)

@@ -21,20 +21,6 @@ def parse_csv():
         #add in zadd for top 10 query 
         r.zadd('mytop10', close, code)
 
-
-def show_top10():
-  top_stocks = r.zrevrange('mytop10', 0, 10)
-  for code in top_stocks:
-    print code
-    print r.hgetall(code)
-
-def get_stock_byname(name):
-  name = name.strip()
-  code = r.smembers('name:'+name)
-  e = next(iter(code))
-  newRes = r.hgetall(e)
-  print newRes
-
 #show_top10()
 
 #get_stock_byname('ABB LTD.')
