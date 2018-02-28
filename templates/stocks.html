@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
+  
+      <title>Latest Stop Data </title>
+  
+      <!-- Bootstrap core CSS -->
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+      <!-- Custom styles for this template -->
+      <!--<link href="static/css/signin.css" rel="stylesheet">-->
+  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  
+  </head>
+   <body>
+    <div class="container">
+      <form class="form-signin" action="/search" method="post" role="form">
+          <input type="text" id="stockname"  placeholder="Stock Name" required autofocus>
+          <button class="btn btn-primary" type="button">Search</button>
+      </form>
+    </div>
+    
+    <div id="search_result" class="container">
+
+    </div>
+
+    <div class="container">
+      <h1>Stock Data</h1>
+      <table class="table">
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>High</th>
+          <th>Low</th>
+          <th>Close</th>
+          <th>Open</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+          <td>{{stock.code}}</td>
+          <td>{{stock.name}}</td>
+          <td>{{stock.high}}</td>
+          <td>{{stock.low}}</td>
+          <td>{{stock.close}}</td>
+          <td>{{stock.open}}</td>
+        </tr>
+        {% endfor %} 
+      </table>
+    </div>
+
+   </body>
+   <script>
+        $(function() {
+        $('button').click(function() {
+          var name = $('#stockname').val();         
+          $.ajax({
+              url: '/search/'+name,
+              type: 'GET',
+              success: function(response) {                  
+                  filterStocks = response; 
+                  console.log(filterStocks);
+                  $('#search_result').html(filterStocks); 
+              },
+              error: function(error) {
+                  console.log(error);
+              }
+          });
+      });
+    });
+   </script>
+</html>

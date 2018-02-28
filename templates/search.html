@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="icon" href="../../favicon.ico">
+      <title>Search Stock Data </title>  
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+  
+  </head>
+   <body>
+    <div class="container">
+        <table class="table">
+          <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Open</th>
+          </tr>
+          {% for stock in filterStocks %}
+          <tr>
+            <td>{{stock.code}}</td>
+            <td>{{stock.name}}</td>
+            <td>{{stock.high}}</td>
+            <td>{{stock.low}}</td>
+            <td>{{stock.close}}</td>
+            <td>{{stock.open}}</td>
+          </tr>
+          {% endfor %} 
+        </table>
+    </div>
+  </body>
+  </html>
