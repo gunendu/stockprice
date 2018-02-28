@@ -12,7 +12,6 @@ def fetchTopStocks():
 
 @application.route('/search/<name>', methods=['GET'])
 def get_stock_byname(name):
-  print "name is",name
   name = name.strip()
   code = r.smembers('name:'+name)
   e = next(iter(code))
@@ -25,7 +24,7 @@ def show_top10():
   top_stocks = r.zrevrange('mytop10', 0, 10)
   stocks = []
   for code in top_stocks:
-    stock = r.hgetall(code)
+    stock = r.hgetall(code) 
     stocks.append(stock)
   return stocks
 
