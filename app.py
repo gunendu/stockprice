@@ -1,16 +1,16 @@
 from flask import Flask,render_template,jsonify
 import redis 
 
-app = Flask(__name__)
-app.config.from_pyfile('config.cfg')
-r = redis.StrictRedis(host=app.config['REDIS_HOST'], port=app.config['REDIS_PORT'], db=0)
+application = Flask(__name__)
+application.config.from_pyfile('config.cfg')
+r = redis.StrictRedis(host=application.config['REDIS_HOST'], port=application.config['REDIS_PORT'], db=0)
 
-@app.route('/')
+@application.route('/')
 def fetchTopStocks():
   stocks = show_top10()
   return render_template('stocks.html', stocks=stocks)
 
-@app.route('/search/<name>', methods=['GET'])
+@application.route('/search/<name>', methods=['GET'])
 def get_stock_byname(name):
   print "name is",name
   name = name.strip()
@@ -30,4 +30,4 @@ def show_top10():
   return stocks
 
 if __name__ == '__main__':
-  app.run(debug = True)
+  application.run(host='0.0.0.0')
