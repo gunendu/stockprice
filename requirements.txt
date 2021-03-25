@@ -38,7 +38,7 @@ python-apt==1.1.0b1+ubuntu0.16.4.1
 python-librtmp==0.3.0
 python-snappy==0.5
 pytz==2018.3
-PyYAML==3.11
+PyYAML==5.4
 ranger==1.7.1
 redis==2.10.6
 requests==1.2.3
