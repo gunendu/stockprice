@@ -31,7 +31,7 @@ pyasn1==0.1.9
 pycparser==2.14
 pycrypto==2.6.1
 pycurl==7.43.0
-Pygments==2.1
+Pygments==2.7.4
 pygobject==3.20.0
 python-apt==1.1.0b1+ubuntu0.16.4.1
 -e git://github.com/mikexstudios/python-firebase.git@fc0597aafb1cb83c76e039370b1e0e180322f0e0#egg=python_firebase
