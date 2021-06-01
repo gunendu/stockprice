@@ -47,6 +47,6 @@ six==1.11.0
 tempora==1.10
 ttystatus==0.32
 unity-lens-photos==1.0
-urllib3==1.20
+urllib3==1.26.5
 virtualenv==15.0.1
 Werkzeug==0.14.1
